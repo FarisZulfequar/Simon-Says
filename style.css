@@ -1,0 +1,55 @@
+/* Creates a 2x2 container to fit the 4 buttons within */
+.container {
+    background-color: transparent;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+}
+
+.grid-item {
+    border-radius: 10px;
+    background-color: lightgray;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+/* Customizes the first button (purple) */
+.purple-btn {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: blueviolet;
+    cursor: pointer;
+}
+
+/* Customizes the second button (orange) */
+.orange-btn{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: orange;
+    cursor: pointer;
+}
+
+/* Customizes the third button (pink) */
+.pink-btn{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: hotpink;
+    cursor: pointer;
+}
+
+/* Customizes the fourth button (silver) */
+.silver-btn{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: silver;
+    cursor: pointer;
+}
