@@ -18,38 +18,22 @@
     cursor: pointer;
 }
 
-/* Customizes the first button (purple) */
-.purple-btn {
+/* Creates a color button class for each of the 4 colored buttons */
+.color-btn {
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    background-color: blueviolet;
     cursor: pointer;
 }
+
+/* Customizes the first button (purple) */
+#purple { background-color: blueviolet; }
 
 /* Customizes the second button (orange) */
-.orange-btn{
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    background-color: orange;
-    cursor: pointer;
-}
+#orange{ background-color: orange; }
 
 /* Customizes the third button (pink) */
-.pink-btn{
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    background-color: hotpink;
-    cursor: pointer;
-}
+#pink { background-color: hotpink; }
 
 /* Customizes the fourth button (silver) */
-.silver-btn{
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    background-color: silver;
-    cursor: pointer;
-}
+#silver { background-color: silver; }
