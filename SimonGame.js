@@ -17,6 +17,42 @@ class SimonGame {
     }
     //endregion
 
+    //region Setters & Getters
+    get ColorList() {
+        return this.#colorList;
+    }
+    get ColorSequence() {
+        return this.#colorSequence;
+    }
+    get CrtLevel() {
+        return this.#crtLevel;
+    }
+    set CrtLevel(newLevel) {
+        this.#crtLevel = newLevel;
+    }
+    get PlayerSequence() {
+        return this.#playerSequence;
+    }
+    //endregion
+
+    //region Methods
+    startGame() {
+
+    }
+
+    nextRound() {
+
+    }
+
+    checkPlayerSequence() {
+
+    }
+
+    resetGame() {
+
+    }
+    //endregion
+
 
 
 }
