@@ -48,6 +48,10 @@ class SimonGame {
 
     }
 
+    gameOver() {
+
+    }
+
     resetGame() {
 
     }
