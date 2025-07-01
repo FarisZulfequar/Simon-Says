@@ -1,7 +1,28 @@
+.startMenu {
+    text-align: center;
+}
+
+.startButton {
+    background-color: white;
+    border-color: rebeccapurple;
+    border-radius: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    grid-template-columns: 200px 10px;
+    margin-top: 20px;
+
+}
+
+.startTitle {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 /* Creates a 2x2 container to fit the 4 buttons within */
-.container {
+.button-container {
     background-color: transparent;
-    display: grid;
+    display: none;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 15px;
@@ -24,16 +45,17 @@
     height: 100%;
     border-radius: 10px;
     cursor: pointer;
+
 }
 
 /* Customizes the first button (purple) */
-#purple { background-color: blueviolet; }
+#purpleBtn { background-color: blueviolet; }
 
 /* Customizes the second button (orange) */
-#orange{ background-color: orange; }
+#orangeBtn { background-color: orange; }
 
 /* Customizes the third button (pink) */
-#pink { background-color: hotpink; }
+#pinkBtn { background-color: hotpink; }
 
 /* Customizes the fourth button (silver) */
-#silver { background-color: silver; }
+#silverBtn { background-color: silver; }

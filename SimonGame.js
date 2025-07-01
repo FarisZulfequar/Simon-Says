@@ -9,7 +9,6 @@ class SimonGame {
 
     //region Constructor
     constructor() {
-        // This is where you initialize all field variables
         this.#colorList = ["purple", "orange", "pink", "silver"];
         this.#colorSequence = [];
         this.#crtLevel = 0;
@@ -33,6 +32,9 @@ class SimonGame {
     get PlayerSequence() {
         return this.#playerSequence;
     }
+    get randomNumber() {
+        return Math.floor(Math.random() * 4);
+    }
     //endregion
 
     //region Methods
@@ -44,7 +46,7 @@ class SimonGame {
 
     }
 
-    checkPlayerSequence() {
+    checkPlayerInput() {
 
     }
 
