@@ -1,7 +1,4 @@
-.startMenu {
-    text-align: center;
-}
-
+.startMenu { text-align: center; }
 .startButton {
     background-color: white;
     border-color: rebeccapurple;
@@ -10,9 +7,8 @@
     cursor: pointer;
     grid-template-columns: 200px 10px;
     margin-top: 20px;
-
+    margin-bottom: 20px;
 }
-
 .startTitle {
     font-size: 30px;
     text-align: center;
@@ -30,7 +26,6 @@
     height: 500px;
     margin: auto;
 }
-
 .grid-item {
     border-radius: 10px;
     background-color: lightgray;
@@ -38,7 +33,6 @@
     margin: 10px;
     cursor: pointer;
 }
-
 /* Creates a color button class for each of the 4 colored buttons */
 .color-btn {
     width: 100%;
@@ -48,14 +42,16 @@
 
 }
 
-/* Customizes the first button (purple) */
+/* Customizes the colored buttons in the game and main menu */
 #purpleBtn { background-color: blueviolet; }
-
-/* Customizes the second button (orange) */
 #orangeBtn { background-color: orange; }
-
-/* Customizes the third button (pink) */
 #pinkBtn { background-color: hotpink; }
-
-/* Customizes the fourth button (silver) */
 #silverBtn { background-color: silver; }
+
+table { margin-left: auto; margin-right: auto; }
+th, td { padding: 25px; }
+
+#sound-example1 { background-color: mediumpurple; }
+#sound-example2 { background-color: lightsalmon; }
+#sound-example3 { background-color: lightpink; }
+#sound-example4 { background-color: silver; }

@@ -39,11 +39,6 @@ class SimonGame {
 
     //region Methods
     startGame() {
-        document.getElementById("startButton").style.display = "none";
-        document.getElementById("title").style.display = "none";
-        document.getElementById("buttonBox").style.display = "grid";
-
-
         /*
         this.addColorToSequence()
         // play the color sequence with the matching sound
@@ -76,6 +71,10 @@ class SimonGame {
 
     }
 
+    gameRules() {
+
+    }
+
     addColorToSequence() {
         // Retrieve a random number from 0 to 3
         let randomColor = this.randomNumber;
@@ -84,31 +83,30 @@ class SimonGame {
         this.#colorSequence.push(this.#colorList[randomColor]);
     }
 
-    /*
+
     playPinkSound() {
-        const pink = new Audio("sound/orange.mp3");
+        const pink = new Audio("sound/sound3.mp3");
         pink.volume = 0.5;
         pink.play();
     }
 
     playOrangeSound() {
-        const orange = new Audio("sound/orange.mp3");
+        const orange = new Audio("sound/sound2.mp3");
         orange.volume = 0.5;
         orange.play();
     }
 
     playPurpleSound() {
-        const purple = new Audio("sound/purple.mp3");
-        purple.volume = 0.5;
+        const purple = new Audio("sound/sound1.mp3");
+        purple.volume = 0.7;
         purple.play();
     }
 
     playSilverSound() {
-        const silver = new Audio("sound/silver.mp3");
+        const silver = new Audio("sound/sound4.mp3");
         silver.volume = 0.5;
         silver.play();
     }
-    */
 
     showSequence() {
 
