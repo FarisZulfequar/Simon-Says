@@ -1,11 +1,18 @@
 .startMenu { text-align: center; }
+#ruleBtn {
+    display: block;
+    margin: 20px auto 10px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: white;
+    color: red;
+}
 .startButton {
     background-color: white;
     border-color: rebeccapurple;
     border-radius: 10px;
     font-size: 30px;
     cursor: pointer;
-    grid-template-columns: 200px 10px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -43,7 +50,7 @@
 }
 
 /* Customizes the colored buttons in the game and main menu */
-#purpleBtn { background-color: blueviolet; }
+#purpleBtn { background-color: #a277ff; }
 #orangeBtn { background-color: orange; }
 #pinkBtn { background-color: hotpink; }
 #silverBtn { background-color: silver; }
@@ -51,7 +58,7 @@
 table { margin-left: auto; margin-right: auto; }
 th, td { padding: 25px; }
 
-#sound-example1 { background-color: mediumpurple; }
+#sound-example1 { background-color: #a277ff; }
 #sound-example2 { background-color: lightsalmon; }
 #sound-example3 { background-color: lightpink; }
 #sound-example4 { background-color: silver; }

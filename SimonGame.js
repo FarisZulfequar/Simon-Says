@@ -3,6 +3,8 @@ class SimonGame {
     //region Field Variables
     #colorList;
     #colorSequence;
+    #colorIDToKey;
+    #colorMapSound;
     #crtLevel;
     #playerSequence;
     //endregion
@@ -10,6 +12,20 @@ class SimonGame {
     //region Constructor
     constructor() {
         this.#colorList = ["purple", "orange", "pink", "silver"];
+        this.#colorIDToKey = { "purpleBtn" : "purple",
+            "orangeBtn" : "orange",
+            "pinkBtn" : "pink",
+            "silverBtn" : "silver",
+            "sound-example1" : "purple",
+            "sound-example2" : "orange",
+            "sound-example3" : "pink",
+            "sound-example4" : "silver",
+        }
+        this.#colorMapSound = { "purple" : new Audio("sound/sound1.mp3"),
+            "orange" : new Audio("sound/sound2.mp3"),
+            "pink" : new Audio("sound/sound3.mp3"),
+            "silver" : new Audio("sound/sound4.mp3")
+        }
         this.#colorSequence = [];
         this.#crtLevel = 0;
         this.#playerSequence = [];
@@ -22,6 +38,12 @@ class SimonGame {
     }
     get ColorSequence() {
         return this.#colorSequence;
+    }
+    get ColorIDToKey() {
+        return this.#colorIDToKey;
+    }
+    get ColorMapSound() {
+        return this.#colorMapSound;
     }
     get CrtLevel() {
         return this.#crtLevel;
@@ -39,26 +61,7 @@ class SimonGame {
 
     //region Methods
     startGame() {
-        /*
-        this.addColorToSequence()
-        // play the color sequence with the matching sound
-        this.#colorSequence.forEach((color) => {
-            switch(color) {
-                case "purple":
-                    this.playPurpleSound();
-                    break;
-                case "orange":
-                    this.playOrangeSound();
-                    break;
-                case "pink":
-                    this.playPinkSound();
-                    break;
-                case "silver":
-                    this.playSilverSound();
-                    break;
-            }
-        })
-         */
+        // TBD
 
 
         // let the player try to match the sequence
@@ -72,7 +75,11 @@ class SimonGame {
     }
 
     gameRules() {
-
+        alert("Step 1: The game plays a sequence of colored buttons using sound\n\n" +
+            "Step 2: The player listens carefully and remembers the order of the colors/sounds\n\n" +
+            "Step 3: The player clicks the colored buttons in the exact same order as shown.\n\n" +
+            "Step 4: If the player correctly enters the sequence, adds one more color/sound and shows the new pattern\n\n" +
+            "Step 5: The game ends if the player clicks the wrong colored")
     }
 
     addColorToSequence() {
@@ -83,29 +90,17 @@ class SimonGame {
         this.#colorSequence.push(this.#colorList[randomColor]);
     }
 
+    PlayColoredSound(colorBtnID) {
+        // first retrieve the color ID from the button
+        const soundID = this.#colorIDToKey[colorBtnID];
 
-    playPinkSound() {
-        const pink = new Audio("sound/sound3.mp3");
-        pink.volume = 0.5;
-        pink.play();
-    }
+        // retrieve the correct audio from the color
+        const colorSound = this.#colorMapSound[soundID];
 
-    playOrangeSound() {
-        const orange = new Audio("sound/sound2.mp3");
-        orange.volume = 0.5;
-        orange.play();
-    }
+        // play the audio
+        colorSound.volume = 0.5;
+        colorSound.play();
 
-    playPurpleSound() {
-        const purple = new Audio("sound/sound1.mp3");
-        purple.volume = 0.7;
-        purple.play();
-    }
-
-    playSilverSound() {
-        const silver = new Audio("sound/sound4.mp3");
-        silver.volume = 0.5;
-        silver.play();
     }
 
     showSequence() {
