@@ -61,7 +61,8 @@ class SimonGame {
 
     //region Methods
     startGame() {
-        // TBD
+        // add a random color to the colorSequence
+        this.addColorToSequence()
 
 
         // let the player try to match the sequence

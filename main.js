@@ -5,6 +5,7 @@ document.getElementById("startButton").addEventListener("click", () => {
     document.getElementById("title").style.display = "none";
     document.getElementById("colorSoundTable").style.display = "none";
     document.getElementById("buttonBox").style.display = "grid";
+    document.getElementById("currentColor").style.display = "";
     game.startGame();
 });
 
