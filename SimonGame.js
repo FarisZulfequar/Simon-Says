@@ -6,6 +6,7 @@ class SimonGame {
     #colorIDToKey;
     #colorMapSound;
     #crtLevel;
+    #highestLevel;
     #playerSequence;
     //endregion
 
@@ -28,6 +29,7 @@ class SimonGame {
         }
         this.#colorSequence = [];
         this.#crtLevel = 0;
+        this.#highestLevel = 0;
         this.#playerSequence = [];
     }
     //endregion

@@ -1,52 +1,67 @@
-.startMenu { text-align: center; }
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#title {
+    font-size: 35px;
+    display: block;
+    text-align: center;
+}
+
+#score-labels {
+    display: none;
+    justify-content: space-between;
+    margin: 10px 10px auto 10px;
+    font-size: 25px;
+}
+
+#currentColor {
+    position: relative;
+    top: 20px;
+}
+
+.startMenu {
+    text-align: center;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 50px;
+}
 #ruleBtn {
     display: block;
-    margin: 20px auto 10px;
+    margin: auto auto 10px;
     font-size: 20px;
     cursor: pointer;
     background-color: white;
     color: red;
 }
-.startButton {
+#startButton {
     background-color: white;
     border-color: rebeccapurple;
     border-radius: 10px;
     font-size: 30px;
     cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.startTitle {
-    font-size: 30px;
-    text-align: center;
-    margin-bottom: 20px;
 }
 
 /* Creates a 2x2 container to fit the 4 buttons within */
 .button-container {
-    background-color: transparent;
     display: none;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 15px;
     width: 500px;
     height: 500px;
-    margin: auto;
+    margin-top: 150px;
 }
-.grid-item {
-    border-radius: 10px;
-    background-color: lightgray;
-    padding: 10px;
-    margin: 10px;
-    cursor: pointer;
-}
+
 /* Creates a color button class for each of the 4 colored buttons */
 .color-btn {
     width: 100%;
     height: 100%;
     border-radius: 10px;
     cursor: pointer;
-
 }
 
 /* Customizes the colored buttons in the game and main menu */
@@ -55,10 +70,14 @@
 #pinkBtn { background-color: hotpink; }
 #silverBtn { background-color: silver; }
 
-table { margin-left: auto; margin-right: auto; }
 th, td { padding: 25px; }
+
+#colorSoundTable {
+    position: relative;
+    top: 100px;
+}
 
 #sound-example1 { background-color: #a277ff; }
 #sound-example2 { background-color: lightsalmon; }
 #sound-example3 { background-color: lightpink; }
-#sound-example4 { background-color: silver; }
+#sound-example4 { background-color: gray; color: white; }
