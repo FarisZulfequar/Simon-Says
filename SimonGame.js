@@ -10,6 +10,10 @@ class SimonGame {
         "sound-example2" : "orange",
         "sound-example3" : "pink",
         "sound-example4" : "silver",
+        "orange" : "orange",
+        "pink" : "pink",
+        "silver" : "silver",
+        "purple" : "purple",
     }
     static colorMapSound = { "purple" : new Audio("sound/sound1.mp3"),
         "orange" : new Audio("sound/sound2.mp3"),
@@ -60,8 +64,8 @@ class SimonGame {
         // add a random color to the colorSequence
         this.addColorToSequence()
 
-
-        // let the player try to match the sequence
+        // Go through the colorSequence and play the corresponding sound and change the currentColor string
+        this.showSequence()
 
 
         // figure out if the player's sequence matches with simon's color sequence
@@ -100,7 +104,21 @@ class SimonGame {
 
     }
 
-    showSequence() {
+    async showSequence() {
+        // Go through the colorSequence and play the corresponding sound and change the currentColor string
+        for (let colorIndex = 0; colorIndex < this.#colorSequence.length; colorIndex++) {
+            await this.timeDelay(100000);
+            this.PlayColoredSound([this.#colorSequence[colorIndex]])
+            document.getElementById("currentColor").innerText = this.#colorSequence[colorIndex].toUpperCase(0)
+            
+        }
+
+         await this.timeDelay(100000);
+
+         document.getElementById("currentColor").innerText = ""
+
+
+
 
     }
 
@@ -119,6 +137,16 @@ class SimonGame {
     resetGame() {
 
     }
+
+    timeDelay() {
+        return new Promise(function(resolve) {
+            setTimeout(function () {
+                resolve();
+            }, 1000)
+        });
+    }
+
+
     //endregion
 
 
