@@ -24,10 +24,3 @@ document.querySelectorAll(".soundExamples").forEach(soundExanple => {
 document.getElementById("ruleBtn").addEventListener("click", () => {
     game.gameRules();
 })
-
-// Plays the respective colored sound during in-game
-document.querySelectorAll(".color-btn").forEach(coloreBtn => {
-    coloreBtn.addEventListener("click", () => {
-        game.PlayColoredSound(coloreBtn.id);
-    })
-})

@@ -20,6 +20,7 @@ class SimonGame {
         "pink" : new Audio("sound/sound3.mp3"),
         "silver" : new Audio("sound/sound4.mp3")
     }
+    static currentColorIndex = 0;
     #colorSequence;
     #crtLevel;
     #highestLevel;
@@ -66,13 +67,6 @@ class SimonGame {
 
         // Go through the colorSequence and play the corresponding sound and change the currentColor string
         this.showSequence()
-
-
-        // figure out if the player's sequence matches with simon's color sequence
-
-
-
-
     }
 
     gameRules() {
@@ -110,16 +104,9 @@ class SimonGame {
             await this.timeDelay(100000);
             this.PlayColoredSound([this.#colorSequence[colorIndex]])
             document.getElementById("currentColor").innerText = this.#colorSequence[colorIndex].toUpperCase(0)
-            
         }
-
          await this.timeDelay(100000);
-
          document.getElementById("currentColor").innerText = ""
-
-
-
-
     }
 
     nextRound() {
@@ -127,11 +114,35 @@ class SimonGame {
     }
 
     checkPlayerInput() {
+        // Check the colored button the user clicked on
+        document.getElementById("buttonBox").addEventListener("click", (event) => {
+            const userColorChoice = SimonGame.colorIDToKey[event.target.id];
 
+            this.PlayColoredSound((userColorChoice))
+
+            // Checks if the the user's color matches with the current color order
+            if (userColorChoice === this.#colorSequence[SimonGame.currentColorIndex]) {
+                SimonGame.currentColorIndex++;
+
+                if (SimonGame.currentColorIndex === this.#colorSequence.length) {
+                    SimonGame.currentColorIndex = 0;
+                    this.#crtLevel+=1;
+                    this.#highestLevel++;
+                    document.getElementById("lblCrtScore").innerText = `Current Level: ${this.#crtLevel}`;
+                    document.getElementById("lblHighestScore").innerText = `Highest Level: ${this.#highestLevel}`;
+                    this.nextRound();
+                }
+            }
+            // Otherwise shows a game over screen
+            else {
+                this.#crtLevel = 0;
+                document.getElementById("lblCrtScore").innerText = `Current Level: ${this.#crtLevel}`;
+                this.gameOver();
+            }
+        });
     }
 
     gameOver() {
-
     }
 
     resetGame() {
