@@ -18,11 +18,11 @@
 
 
 <div class="wrapper">
-    <div class="button-container" id="buttonBox" onclick="game.checkPlayerInput()">
-        <button class="color-btn" id="purpleBtn" onclick="game.checkPlayerInput()">Purple</button>
-        <button class="color-btn" id="orangeBtn" onclick="game.checkPlayerInput()">Orange</button>
-        <button class="color-btn" id="pinkBtn" onclick="game.checkPlayerInput()">Pink</button>
-        <button class="color-btn" id="silverBtn" onclick="game.checkPlayerInput()">Silver</button>
+    <div class="button-container" id="buttonBox">
+        <button class="color-btn" id="purpleBtn" onclick="game.checkPlayerInput(this.id)">Purple</button>
+        <button class="color-btn" id="orangeBtn" onclick="game.checkPlayerInput(this.id)">Orange</button>
+        <button class="color-btn" id="pinkBtn" onclick="game.checkPlayerInput(this.id)">Pink</button>
+        <button class="color-btn" id="silverBtn" onclick="game.checkPlayerInput(this.id)">Silver</button>
     </div>
 
     <label style="font-size: 40px; display: none" id="currentColor" >Color</label>

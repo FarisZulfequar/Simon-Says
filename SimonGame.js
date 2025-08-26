@@ -64,6 +64,8 @@ class SimonGame {
     startGame() {
         // add a random color to the colorSequence
         this.addColorToSequence()
+        this.addColorToSequence()
+        this.addColorToSequence()
 
         // Go through the colorSequence and play the corresponding sound and change the currentColor string
         this.showSequence()
@@ -103,43 +105,44 @@ class SimonGame {
         for (let colorIndex = 0; colorIndex < this.#colorSequence.length; colorIndex++) {
             await this.timeDelay(100000);
             this.PlayColoredSound([this.#colorSequence[colorIndex]])
-            document.getElementById("currentColor").innerText = this.#colorSequence[colorIndex].toUpperCase(0)
+            document.getElementById("currentColor").innerText = this.#colorSequence[colorIndex].toUpperCase()
         }
          await this.timeDelay(100000);
          document.getElementById("currentColor").innerText = ""
+        this.toggleButton(false);
     }
 
     nextRound() {
 
     }
 
-    checkPlayerInput() {
+    checkPlayerInput(buttonID) {
         // Check the colored button the user clicked on
-        document.getElementById("buttonBox").addEventListener("click", (event) => {
-            const userColorChoice = SimonGame.colorIDToKey[event.target.id];
+        const userColorChoice = SimonGame.colorIDToKey[buttonID];
+        this.PlayColoredSound((userColorChoice))
 
-            this.PlayColoredSound((userColorChoice))
+        // Checks if user's color matches with the current color order
+        if (userColorChoice === this.#colorSequence[SimonGame.currentColorIndex]) {
+            SimonGame.currentColorIndex++;
 
-            // Checks if the the user's color matches with the current color order
-            if (userColorChoice === this.#colorSequence[SimonGame.currentColorIndex]) {
-                SimonGame.currentColorIndex++;
-
-                if (SimonGame.currentColorIndex === this.#colorSequence.length) {
-                    SimonGame.currentColorIndex = 0;
-                    this.#crtLevel+=1;
-                    this.#highestLevel++;
-                    document.getElementById("lblCrtScore").innerText = `Current Level: ${this.#crtLevel}`;
-                    document.getElementById("lblHighestScore").innerText = `Highest Level: ${this.#highestLevel}`;
-                    this.nextRound();
-                }
-            }
-            // Otherwise shows a game over screen
-            else {
-                this.#crtLevel = 0;
+            // Moves onto the next round, increases the levels and disables the use of the buttons temporarily
+            if (SimonGame.currentColorIndex === this.#colorSequence.length) {
+                SimonGame.currentColorIndex = 0;
+                this.#crtLevel++;
+                this.#highestLevel++;
                 document.getElementById("lblCrtScore").innerText = `Current Level: ${this.#crtLevel}`;
-                this.gameOver();
+                document.getElementById("lblHighestScore").innerText = `Highest Level: ${this.#highestLevel}`;
+                this.toggleButton(true);
+                this.nextRound();
             }
-        });
+        }
+        // Otherwise shows a game over screen
+        else {
+            this.#crtLevel = 0;
+            document.getElementById("lblCrtScore").innerText = `Current Level: ${this.#crtLevel}`;
+            this.toggleButton(true);
+            this.gameOver();
+        }
     }
 
     gameOver() {
@@ -157,7 +160,12 @@ class SimonGame {
         });
     }
 
-
+    toggleButton(toggle) {
+        const buttons = document.getElementsByClassName("color-btn");
+        for (let number = 0; number < buttons.length; number++) {
+            buttons[number].disabled = toggle;
+        }
+    }
     //endregion
 
 
