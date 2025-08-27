@@ -10,7 +10,7 @@ document.getElementById("startButton").addEventListener("click", () => {
     document.getElementById("score-labels").style.display = "flex";
     document.getElementById("start-Menu").style.top = "50px";
     game.toggleButton(true);
-    game.startGame();
+    game.nextRound();
 });
 
 

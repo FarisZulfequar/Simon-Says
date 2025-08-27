@@ -36,41 +36,7 @@ class SimonGame {
     }
     //endregion
 
-    //region Setters & Getters
-    get ColorSequence() {
-        return this.#colorSequence;
-    }
-    get CrtLevel() {
-        return this.#crtLevel;
-    }
-    set CrtLevel(newLevel) {
-        this.#crtLevel = newLevel;
-    }
-    get HighestLevel() {
-        return this.#highestLevel;
-    }
-    set HighestLevel(newLevel) {
-        this.#highestLevel = newLevel;
-    }
-    get PlayerSequence() {
-        return this.#playerSequence;
-    }
-    get randomNumber() {
-        return Math.floor(Math.random() * 4);
-    }
-    //endregion
-
     //region Methods
-    startGame() {
-        // add a random color to the colorSequence
-        this.addColorToSequence()
-        this.addColorToSequence()
-        this.addColorToSequence()
-
-        // Go through the colorSequence and play the corresponding sound and change the currentColor string
-        this.showSequence()
-    }
-
     gameRules() {
         alert("Step 1: The game plays a sequence of colored buttons using sound\n\n" +
             "Step 2: The player listens carefully and remembers the order of the colors/sounds\n\n" +
@@ -81,7 +47,7 @@ class SimonGame {
 
     addColorToSequence() {
         // Retrieve a random number from 0 to 3
-        let randomColor = this.randomNumber;
+        let randomColor = Math.floor(Math.random() * 4);
 
         // Add the color to the sequence based on the number from the colorList index
         this.#colorSequence.push(SimonGame.colorList[randomColor]);
@@ -113,7 +79,8 @@ class SimonGame {
     }
 
     nextRound() {
-
+        this.addColorToSequence()
+        this.showSequence()
     }
 
     checkPlayerInput(buttonID) {
