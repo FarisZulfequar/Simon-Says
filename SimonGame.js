@@ -62,9 +62,9 @@ class SimonGame {
 
     /**
      * Plays the corresponding color from the colored button.
-     * @param {string} colorBtnID - The button's ID
+     * @param {*[]} colorBtnID - The button's ID
      */
-    PlayColoredSound(colorBtnID) {
+    async PlayColoredSound(colorBtnID) {
         // first retrieve the color ID from the button
         const soundID = SimonGame.colorIDToKey[colorBtnID];
 
@@ -72,7 +72,6 @@ class SimonGame {
         const colorSound = SimonGame.colorMapSound[soundID];
 
         // play the audio
-        colorSound.volume = 0.5;
         colorSound.play();
 
     }
@@ -85,7 +84,7 @@ class SimonGame {
         for (let colorIndex = 0; colorIndex < this.#colorSequence.length; colorIndex++) {
             await this.timeDelay(700);
 
-            this.PlayColoredSound([this.#colorSequence[colorIndex]])
+            await this.PlayColoredSound([this.#colorSequence[colorIndex]])
             document.getElementById(`${this.#colorSequence[colorIndex]}Btn`).style.opacity = "1";
             await this.timeDelay(200);
             document.getElementById(`${this.#colorSequence[colorIndex]}Btn`).style.opacity = "0.7";
@@ -109,7 +108,7 @@ class SimonGame {
         // Check the colored button the user clicked on
         const userColorChoice = SimonGame.colorIDToKey[buttonID];
         document.getElementById(`${buttonID}`).style.opacity = '1';
-        this.PlayColoredSound((userColorChoice))
+        await this.PlayColoredSound((userColorChoice))
         await this.timeDelay(100);
         document.getElementById(`${buttonID}`).style.opacity = '0.7';
 
@@ -155,6 +154,7 @@ class SimonGame {
     resetGame() {
         this.#crtLevel = 0;
         this.#colorSequence.length = 0;
+        SimonGame.currentColorIndex = 0;
         document.getElementById("lblCrtScore").innerText = `Current Level: ${this.#crtLevel}`;
         document.getElementById("ruleBtn").style.display = "block";
         document.getElementById("correctionLabel").style.display = "none";
