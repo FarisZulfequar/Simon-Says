@@ -40,6 +40,9 @@ class SimonGame {
     //endregion
 
     //region Methods
+    /**
+     * Explains the rules of the game
+     */
     gameRules() {
         alert("Step 1: The game plays a sequence of colored buttons using sound\n\n" +
             "Step 2: The player listens carefully and remembers the order of the colors/sounds\n\n" +
@@ -48,14 +51,19 @@ class SimonGame {
             "Step 5: The game ends if the player clicks the wrong colored")
     }
 
+    /**
+     * Adds corresponding color into the color sequence
+     */
     addColorToSequence() {
-        // Retrieve a random number from 0 to 3
         let randomColor = Math.floor(Math.random() * 4);
-
         // Add the color to the sequence based on the number from the colorList index
         this.#colorSequence.push(SimonGame.colorList[randomColor]);
     }
 
+    /**
+     * Plays the corresponding color from the colored button.
+     * @param {string} colorBtnID - The button's ID
+     */
     PlayColoredSound(colorBtnID) {
         // first retrieve the color ID from the button
         const soundID = SimonGame.colorIDToKey[colorBtnID];
@@ -69,6 +77,9 @@ class SimonGame {
 
     }
 
+    /**
+     * Goes to the colorSequence and lights up each color and plays the sound to the user
+     */
     async showSequence() {
         // Go through the colorSequence and play the corresponding sound and change the currentColor string
         for (let colorIndex = 0; colorIndex < this.#colorSequence.length; colorIndex++) {
@@ -82,11 +93,18 @@ class SimonGame {
         this.toggleButton(false);
     }
 
+    /**
+     * Proceeds to add a color into the sequence and plays
+     */
     nextRound() {
         this.addColorToSequence()
         this.showSequence()
     }
 
+    /**
+     * Checks the user's input and compares it to the current color in the color sequence
+     * @param {string} buttonID - The button's ID
+     */
     async checkPlayerInput(buttonID) {
         // Check the colored button the user clicked on
         const userColorChoice = SimonGame.colorIDToKey[buttonID];
@@ -119,6 +137,9 @@ class SimonGame {
         }
     }
 
+    /**
+     * Restricts the user continuing to play and corrects them what colored button to press
+     */
     gameOver() {
         this.toggleButton(true)
         document.getElementById("ruleBtn").style.display = "none";
@@ -128,6 +149,9 @@ class SimonGame {
             ${this.#colorSequence[SimonGame.currentColorIndex]}`.toUpperCase();
     }
 
+    /**
+     * Restarts the game
+     */
     resetGame() {
         this.#crtLevel = 0;
         this.#colorSequence.length = 0;
@@ -139,6 +163,9 @@ class SimonGame {
         this.nextRound()
     }
 
+    /**
+     * Adds a delay intervals in-between each color light up
+     */
     timeDelay(milliseconds) {
         return new Promise(function(resolve) {
             setTimeout(function () {
@@ -147,6 +174,9 @@ class SimonGame {
         });
     }
 
+    /**
+     * Disables/Enables the button to be clicked
+     */
     toggleButton(toggle) {
         const buttons = document.getElementsByClassName("color-btn");
         for (let number = 0; number < buttons.length; number++) {
@@ -155,7 +185,4 @@ class SimonGame {
         }
     }
     //endregion
-
-
-
 }
