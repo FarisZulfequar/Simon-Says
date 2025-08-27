@@ -69,12 +69,14 @@ class SimonGame {
     async showSequence() {
         // Go through the colorSequence and play the corresponding sound and change the currentColor string
         for (let colorIndex = 0; colorIndex < this.#colorSequence.length; colorIndex++) {
-            await this.timeDelay(100000);
+            await this.timeDelay(1000);
+
             this.PlayColoredSound([this.#colorSequence[colorIndex]])
-            document.getElementById("currentColor").innerText = this.#colorSequence[colorIndex].toUpperCase()
+            document.getElementById(`${this.#colorSequence[colorIndex]}Btn`).style.opacity = "1";
+            await this.timeDelay(200);
+            document.getElementById(`${this.#colorSequence[colorIndex]}Btn`).style.opacity = "0.7";
         }
-         await this.timeDelay(100000);
-         document.getElementById("currentColor").innerText = ""
+         await this.timeDelay(1000);
         this.toggleButton(false);
     }
 
@@ -83,10 +85,13 @@ class SimonGame {
         this.showSequence()
     }
 
-    checkPlayerInput(buttonID) {
+    async checkPlayerInput(buttonID) {
         // Check the colored button the user clicked on
         const userColorChoice = SimonGame.colorIDToKey[buttonID];
+        document.getElementById(`${buttonID}`).style.opacity = '1';
         this.PlayColoredSound((userColorChoice))
+        await this.timeDelay(100);
+        document.getElementById(`${buttonID}`).style.opacity = '0.7';
 
         // Checks if user's color matches with the current color order
         if (userColorChoice === this.#colorSequence[SimonGame.currentColorIndex]) {
@@ -119,11 +124,11 @@ class SimonGame {
 
     }
 
-    timeDelay() {
+    timeDelay(milliseconds) {
         return new Promise(function(resolve) {
             setTimeout(function () {
                 resolve();
-            }, 1000)
+            }, milliseconds)
         });
     }
 
@@ -131,6 +136,7 @@ class SimonGame {
         const buttons = document.getElementsByClassName("color-btn");
         for (let number = 0; number < buttons.length; number++) {
             buttons[number].disabled = toggle;
+            buttons[number].style.opacity = "0.7";
         }
     }
     //endregion

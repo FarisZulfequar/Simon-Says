@@ -6,7 +6,6 @@ document.getElementById("startButton").addEventListener("click", () => {
     document.getElementById("title").style.display = "none";
     document.getElementById("colorSoundTable").style.display = "none";
     document.getElementById("buttonBox").style.display = "grid";
-    document.getElementById("currentColor").style.display = "";
     document.getElementById("score-labels").style.display = "flex";
     document.getElementById("start-Menu").style.top = "50px";
     game.toggleButton(true);
