@@ -24,7 +24,6 @@ class SimonGame {
     #colorSequence;
     #crtLevel;
     #highestLevel;
-    #playerSequence;
     //endregion
 
     //region Constructor
@@ -32,7 +31,11 @@ class SimonGame {
         this.#colorSequence = [];
         this.#crtLevel = 0;
         this.#highestLevel = 0;
-        this.#playerSequence = [];
+
+        // Stores the high score value locally
+        const storedHigh = localStorage.getItem("highestScore");
+        this.#highestLevel = storedHigh ? parseInt(storedHigh) : 0;
+        document.getElementById("lblHighestScore").innerText = `Highest Level: ${this.#highestLevel}`;
     }
     //endregion
 
@@ -69,14 +72,13 @@ class SimonGame {
     async showSequence() {
         // Go through the colorSequence and play the corresponding sound and change the currentColor string
         for (let colorIndex = 0; colorIndex < this.#colorSequence.length; colorIndex++) {
-            await this.timeDelay(1000);
+            await this.timeDelay(700);
 
             this.PlayColoredSound([this.#colorSequence[colorIndex]])
             document.getElementById(`${this.#colorSequence[colorIndex]}Btn`).style.opacity = "1";
             await this.timeDelay(200);
             document.getElementById(`${this.#colorSequence[colorIndex]}Btn`).style.opacity = "0.7";
         }
-         await this.timeDelay(1000);
         this.toggleButton(false);
     }
 
@@ -100,28 +102,41 @@ class SimonGame {
             // Moves onto the next round, increases the levels and disables the use of the buttons temporarily
             if (SimonGame.currentColorIndex === this.#colorSequence.length) {
                 SimonGame.currentColorIndex = 0;
+                if (this.#crtLevel === this.#highestLevel) {
+                    this.#highestLevel++;
+                    localStorage.setItem("highestScore", this.#highestLevel);
+                    document.getElementById("lblHighestScore").innerText = `Highest Level: ${this.#highestLevel}`;
+                }
                 this.#crtLevel++;
-                this.#highestLevel++;
                 document.getElementById("lblCrtScore").innerText = `Current Level: ${this.#crtLevel}`;
-                document.getElementById("lblHighestScore").innerText = `Highest Level: ${this.#highestLevel}`;
                 this.toggleButton(true);
                 this.nextRound();
             }
         }
         // Otherwise shows a game over screen
         else {
-            this.#crtLevel = 0;
-            document.getElementById("lblCrtScore").innerText = `Current Level: ${this.#crtLevel}`;
-            this.toggleButton(true);
             this.gameOver();
         }
     }
 
     gameOver() {
+        this.toggleButton(true)
+        document.getElementById("ruleBtn").style.display = "none";
+        document.getElementById("correctionLabel").style.display = "block";
+        document.getElementById("retryButton").style.display = "block";
+        document.getElementById("correctionLabel").innerText = `You Pressed the wrong Button! Correct Button : 
+            ${this.#colorSequence[SimonGame.currentColorIndex]}`.toUpperCase();
     }
 
     resetGame() {
+        this.#crtLevel = 0;
+        this.#colorSequence.length = 0;
+        document.getElementById("lblCrtScore").innerText = `Current Level: ${this.#crtLevel}`;
+        document.getElementById("ruleBtn").style.display = "block";
+        document.getElementById("correctionLabel").style.display = "none";
+        document.getElementById("retryButton").style.display = "none";
 
+        this.nextRound()
     }
 
     timeDelay(milliseconds) {

@@ -32,6 +32,23 @@
     background-color: white;
     color: red;
 }
+
+#correctionLabel {
+    display: none;
+    margin: 20px auto 10px;
+    text-align: center;
+    font-size: 25px;
+}
+
+#retryButton {
+    display: none;
+    margin: auto auto 10px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: white;
+    color: forestgreen;
+}
+
 #startButton {
     background-color: white;
     border-color: rebeccapurple;
